@@ -1,0 +1,186 @@
+:root{
+    --text-color: rgb(0, 0, 0);
+    --unselected: grey;
+}
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+    font-family: unset;
+}
+
+@font-face {
+    font-family: 'Shadowst';
+    font-style: normal;
+    font-weight: 400;
+    src:
+         url('../assets/fonts/shadows-into-light-v10-latin-regular.woff2') format('woff2'),
+         url('../assets/fonts/shadows-into-light-v10-latin-regular.woff') format('woff');
+  }
+
+body{
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-areas: 
+    "navBar navBar navBar"
+    "aside contentBar ."
+    "aside . .";
+    overflow:hidden;
+    grid-template-columns: 1fr 2fr .3fr;
+    grid-row-gap: 2rem;
+}
+
+header{
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    justify-items: center;
+    background-color: #E63700;
+    grid-area: navBar;
+}
+
+.title{
+    font-family: 'Shadowst';
+    font-size: 4rem;
+}
+
+.burgMenu{
+    margin: 15px 0 15px 45px;
+    padding: 2px 7px;
+    font-size: 2.5rem;
+    border-radius: 5px;
+    justify-self: start;
+    cursor:pointer;
+}
+
+.burgMenu:hover{
+    background:rgba(255, 255, 255, 0.624)
+}
+
+.userInfo > button {
+    background:none;
+    border:none;
+    font-size: 2rem;
+    margin-right: 3rem;
+    color: var(--text-color);
+}
+
+.userInfo > button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.sideMenu{
+    width:300px;
+    height: 100vh;
+    overflow:none;
+    grid-area: aside;
+    transform:translateX(0px);
+    transition:transform .2s linear;
+}
+
+.sideMenuHide{
+    transform:translateX(-100%);
+    transition:transform .2s linear;
+}
+
+.asideItem{
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.asideItem > div { /* This affects aside items, inbox today upcoming etc... */
+    display:flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.asideItem > div > div { /* This sets margin right for the SVG's of the aside menu */
+    margin-right: 1.5rem;
+}
+
+.menuText{
+    font-size: 1.8rem;
+    margin:0;
+    cursor:pointer;
+}
+
+.menuText:hover{
+    color:black;
+    font-weight:bold;
+}
+
+.projHeader{
+    display:flex;
+    flex-flow: row;
+    align-items: center;
+    margin-left: 7rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.projectsTitle{
+    flex-grow: 1;
+    padding-left: 1.5rem;
+}
+
+.projArrow{
+    transform:rotate(-90deg);
+    transition:transform .2s linear;
+}
+
+.projArrowRot{
+    transform:rotate(0deg);
+}
+
+.addButton{
+    margin-right: 2rem;
+}
+
+.mainBar{
+    grid-area: contentBar;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    transform:translateX(0px);
+    transition:transform .2s linear;
+}
+
+.mainBarDesp{
+    transform:translateX(-100px);
+    transition: transform .2s linear;
+}
+
+.currentSgn{
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+.sgnOptions{
+    display:flex;
+    flex-flow:row;
+    align-items: center;
+}
+
+.sortButton, .optsButton{
+    background:none;
+    border:none;
+    display:flex;
+    align-items: center;
+}
+
+.sgnOptions > button{
+    color:grey;
+    fill:grey;
+}
+
+.sgnOptions > button:hover {
+    color: black;
+    fill:black;
+    cursor: pointer;
+
+}
