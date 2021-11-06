@@ -32,3 +32,11 @@ export function menuItem(iconClass,elmClass,text) {
                     );
     return container;
 }
+
+export function newInput(type,elmClass,placeholder){
+    const container = newElement("input",elmClass);
+        container.type = type;
+        container.placeholder = placeholder;
+        container.autocomplete = "off";
+    return container;
+}

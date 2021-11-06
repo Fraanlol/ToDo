@@ -1,7 +1,7 @@
 import "./styles/mainStyle.css";
-import * as interactions from "./modules/events.js";
+import * as interactions from "./modules/eventListeners.js";
 import * as create from "./helperFunctions.js";
-
+import * as form from "./modules/addBook.js";
 
 ( function buildPage(){
     // First build the Header Bar
@@ -48,15 +48,34 @@ import * as create from "./helperFunctions.js";
 
     })();
 
-    ( function buildMainBar(){
-        const container = create.newElement('div','mainBar');
-        const title = create.newElement('h1','currentSgn','Testing');
-        const extras = create.newElement('div','sgnOptions');
-            extras.append(create.newElement('button','sortButton'), create.newElement('button','optsButton'));
-        container.append(title,extras);
-        body.append(container);
+    ( function buildMainContent(){
+        const mainContent = create.newElement("div","mainContentContainer");
+
+        (function topBar() {
+            const container = create.newElement('div','mainBar');
+            const title = create.newElement('h1','currentSgn','Testing');
+            const addContainer = create.newElement("div", "addContainer");
+    
+            const extras = create.newElement('div','sgnOptions');
+                extras.append(create.newElement('button','sortButton'), create.newElement('button','optsButton'));
+            container.append(title,addContainer,extras);
+            mainContent.append(container);
+        })();
+
+        (function todoList(){
+            const container = create.newElement('div','todoListContainer');
+            mainContent.append(container);
+        })();
+
+       body.append(mainContent);
+       form.createAddButton();
+       interactions.addBook();
     })();
+
+    
 })();
+
+
 
 (function loadSvg() {
     document.querySelector('.mailbox').innerHTML = `<svg class="inbox" width="32" height="32" viewBox="0 0 24 24">
