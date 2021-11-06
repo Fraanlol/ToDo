@@ -1,6 +1,7 @@
 :root{
     --text-color: rgb(0, 0, 0);
     --unselected: grey;
+    --listBorder: rgba(0,0,0,0.3);
 }
 *{
     box-sizing: border-box;
@@ -26,8 +27,8 @@ body{
     display:grid;
     grid-template-areas: 
     "navBar navBar navBar"
-    "aside contentBar ."
-    "aside . .";
+    "aside mainContent ."
+    "aside mainContent .";
     overflow:hidden;
     grid-template-columns: 1fr 2fr .3fr;
     grid-row-gap: 2rem;
@@ -141,18 +142,13 @@ header{
 }
 
 .mainBar{
-    grid-area: contentBar;
     display:flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid black;
     transform:translateX(0px);
     transition:transform .2s linear;
-}
-
-.mainBarDesp{
-    transform:translateX(-100px);
-    transition: transform .2s linear;
+    margin-bottom: 1rem;
 }
 
 .currentSgn{
@@ -183,4 +179,98 @@ header{
     fill:black;
     cursor: pointer;
 
+}
+
+.mainContent{
+    grid-area: mainContent;
+}
+
+
+.addTaskButton{
+    display:flex;
+    align-items: center;
+    font-size: 1.6rem;
+    border-bottom: 1px solid var(--listBorder);
+    padding:1rem 0;
+    cursor:pointer;
+    color: rgb(0,0,0);
+    opacity: 0.6;
+}
+
+.addTaskButton:hover{
+    color:orangered;
+    opacity:1;
+}
+
+.addTaskButton > img{
+    height:20px;
+    width:20px;
+    margin-right: 1rem;
+    
+}
+
+.createDescription{
+    background:none;
+}
+.todoListContainer{
+    transform:translateX(0px);
+    transition:transform .2s linear;
+}
+
+.contentDisp{
+    transform:translateX(-100px);
+    transition: transform .2s linear;
+}
+/* FORM STYLE */ 
+
+.infoRow{
+    display:flex;
+    flex-flow: column;
+    border: 1px solid black;
+    padding:5px;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+}
+
+.todoTitle, .todoText{
+    border:none;
+    outline:none;
+    border:none;
+    margin:5px;
+}
+
+.todoText{
+   height:50px;
+   resize:none;
+}
+
+.todoDate{
+    outline:none;
+    border:1px solid orangered;
+    width:20%;
+    border-radius: 5px;
+    margin:5px;
+}
+
+.todoAcceptBtn{
+    border:none;
+    background:orangered;
+    color:white;
+    padding:.5rem 2rem;
+    margin:.5rem;
+    font-size: 14px;
+    border-radius:.5rem;
+    cursor:pointer;
+}
+
+.todoEraseBtn{
+    border:.5px solid grey;
+    cursor:pointer;
+    background:none;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+}
+
+.todoEraseBtn:hover{
+    background:rgba(206, 206, 206, 0.678);
 }
