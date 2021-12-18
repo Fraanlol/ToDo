@@ -1,6 +1,6 @@
 :root{
     --text-color: rgb(0, 0, 0);
-    --unselected: grey;
+    --unselected: rgba(128, 128, 128, 0.658);
     --listBorder: rgba(0,0,0,0.3);
 }
 *{
@@ -34,13 +34,14 @@ body{
     grid-row-gap: 2rem;
 }
 
-header{
+.header{
     display:grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     justify-items: center;
     background-color: #E63700;
     grid-area: navBar;
+    user-select: none;
 }
 
 .title{
@@ -129,16 +130,18 @@ header{
 }
 
 .projArrow{
-    transform:rotate(-90deg);
+    transform:rotate(0deg);
     transition:transform .2s linear;
+    cursor:pointer;
 }
 
 .projArrowRot{
-    transform:rotate(0deg);
+    transform:rotate(-90deg);
 }
 
 .addButton{
     margin-right: 2rem;
+    cursor:pointer;
 }
 
 .mainBar{
@@ -215,6 +218,9 @@ header{
 .todoListContainer{
     transform:translateX(0px);
     transition:transform .2s linear;
+    overflow-y:auto;
+    height:75vh;
+    
 }
 
 .contentDisp{
@@ -252,7 +258,7 @@ header{
     margin:5px;
 }
 
-.todoAcceptBtn{
+.todoAcceptBtn, .todoEditBtn{
     border:none;
     background:orangered;
     color:white;
@@ -263,7 +269,7 @@ header{
     cursor:pointer;
 }
 
-.todoEraseBtn{
+.todoEraseBtn, .todoEdCancelBtn{
     border:.5px solid grey;
     cursor:pointer;
     background:none;
@@ -274,3 +280,199 @@ header{
 .todoEraseBtn:hover{
     background:rgba(206, 206, 206, 0.678);
 }
+
+
+
+/* TODO style */
+
+.todoHolder{
+    display:flex;
+    padding:1rem 0;
+    margin:1rem 0;
+    cursor:pointer;
+    border-bottom:1px solid var(--listBorder);
+}
+
+.todoHolder:hover .taskOptions{
+    opacity:1;
+}
+
+.taskStatus{
+    margin:auto;
+}
+.statusCircle{
+    width:18px;
+    height:18px;
+    border:1px solid var(--unselected);
+    border-radius: 50%;
+}
+
+.statusCircle > img {
+    width: 15px;
+    height: 15px;
+    opacity:0;
+}
+
+.statusCircle:hover .circleImg{
+    opacity:0.5;
+}
+
+.taskOptions{
+    display:flex;
+    opacity:0;
+}
+
+.taskOptions > div{
+    margin: 0 .5rem;
+}
+
+.taskContent{
+    margin: 0 1rem;
+    flex-basis:90%;
+}
+
+.taskTitle{
+    font-size: 1.7rem;
+}
+
+.taskDescription{
+    font-size: 1.4rem;
+    color: var(--unselected);
+}
+
+.taskDate{
+    font-size: 1.4rem;
+    color: var(--unselected);
+}
+
+.dateContainer{
+    display:flex;
+    align-items: center;
+}
+
+.dateContainer > img{
+    width:15px;
+    height: 15px;
+    opacity: 0.6;
+}
+
+
+
+
+
+
+/* PROJ POPUP*/
+
+.outerForm{
+    width:100%;
+    height:100%;
+    position:absolute;
+    margin: 0 auto;
+    display:flex;
+    background: rgba(0,0,0,0.7);
+}
+
+.newProjMenu {
+    margin: auto;
+    background: white;
+    /*padding: 5rem 0;*/
+    border-radius: 10px;
+}
+
+.formHeader{
+    font-size: 1.5rem;
+    font-weight: bolder;
+    padding:15px 2rem;
+    border-radius: 10px 10px 0 0;
+    background-color:rgba(214, 214, 214, 0.466);
+}
+
+.formAreaName{
+    margin:0;
+}
+
+.formFooter{
+    display:flex;
+    justify-content:flex-end;
+    gap: 15px;
+    padding:10px 20px;
+    border-radius: 0 0 10px 10px;
+    background-color:rgba(214, 214, 214, 0.466);
+}
+
+.newProjDecline{
+    border:none;
+    font-weight: bold;
+    border: 1px solid var(--unselected);
+    padding:.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.newProjCreate{
+    background:orangered;
+    border:none;
+    color:white;
+    border: 1px solid var(--unselected);
+    font-weight: bolder;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newProjForm {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding:2.5rem;
+}
+
+.newProjNameInput{
+    min-width:300px;
+    border:1px solid var(--unselected);
+    border-radius:5px;
+    padding:5px;
+}
+
+.newProjNameInput:focus {
+    outline: 1px solid orangered;    
+}
+
+.newProjNameTitle , .newProjColorTitle{
+    font-size: 1.4rem;
+}
+
+.newProjColorInput{
+    width:300px;
+    border:1px solid var(--unselected);
+    border-radius:5px;
+}
+
+.projItem {
+    font-size: 1.5rem;
+    font-family: system-ui;
+    font-weight: 100;
+    margin: 1rem 0;
+    cursor:pointer;
+}
+
+.projList{
+    margin-left:5rem;
+    height: fit-content;
+    transition: all .3s linear;
+}
+
+@keyframes prueba{
+    0%{
+        transform: translateY(0px);
+
+    }
+    100%{
+        transform: translateY(-100px);
+        opacity:0.1;
+        visibility: hidden;
+    }
+}
+
+.collapse{
+    animation: prueba .5s linear;
+    animation-fill-mode: forwards;
+}
+

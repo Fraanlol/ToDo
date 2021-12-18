@@ -2,6 +2,8 @@ import "./styles/mainStyle.css";
 import * as interactions from "./modules/eventListeners.js";
 import * as create from "./helperFunctions.js";
 import * as form from "./modules/addBook.js";
+import * as task from "./modules/todoObject/taskManipulation.js"
+
 
 ( function buildPage(){
     // First build the Header Bar
@@ -69,7 +71,7 @@ import * as form from "./modules/addBook.js";
 
        body.append(mainContent);
        form.createAddButton();
-       interactions.addBook();
+       interactions.addBookButton();
     })();
 
     
@@ -130,3 +132,5 @@ import * as form from "./modules/addBook.js";
 })();
 
 interactions.loadInteractions();
+document.querySelector('.currentSgn').textContent = `Inbox`;
+task.projectHandler.loadProject("Inbox");

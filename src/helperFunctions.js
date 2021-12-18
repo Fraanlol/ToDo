@@ -6,8 +6,9 @@ export function newElement(element, classname, text, extraClass) {
     return creation;
 }
 
-export function createImage(src){
+export function createImage(src,classname){
     let creation = document.createElement('img');
+    classname != undefined ? creation.classList.add(classname):false;
     creation.src = src;
     return creation;
 }
